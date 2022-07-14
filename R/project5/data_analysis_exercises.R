@@ -1,6 +1,5 @@
 # Scatterplot 
 
-library(UsingR)
 library(dplyr)
 data(nym.2002, package="UsingR")
 males <- filter(nym.2002, gender == 'Male')
@@ -34,5 +33,22 @@ boxplot(females$time~group)
 
 group <- floor(males$age/5) * 5
 boxplot(males$time~group)
+
+
+# ----------------------------------------------------------------------------------------------------------
+# Symmetry of Log Ratios Exercises
+
+time = sort(nym.2002$time)
+
+# 1) What is the fastest time divided by the median time?
+median <- median(time)
+min <- min(time)
+r <- min/median
+print(r)
+
+# 2) What is the slowest time divided by the median time?
+r <- max(time)/median
+
+
 
 

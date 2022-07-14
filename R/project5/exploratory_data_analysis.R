@@ -1,3 +1,6 @@
+
+# Scatterplot
+
 library(UsingR)
 data('father.son')
 x <- father.son$fheight
@@ -23,4 +26,7 @@ fatherheights <- as.numeric(names(means))
 plot(fatherheights,means,ylab="average of strata of son heights", ylim = range(fatherheights))
 abline(0,cor(x,y))
 cor <- cor(x,y)
-print(cor) # correlation = 0.50, this value is the slope of the line in the plot (regression line)  
+print(cor) # correlation = 0.50, this value is the slope of the line in the plot (regression line)
+
+
+
