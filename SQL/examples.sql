@@ -25,3 +25,29 @@ FROM vendors v
 WHERE invoice_total - payment_total - credit_total > 0
 ORDER BY vendor_name, line_item_amount DESC;
 
+SELECT vendor_name, invoice_number, invoice_total
+FROM vendors 
+	LEFT JOIN invoices
+		ON vendors.vendor_id = invoices.invoice_id
+ORDER BY vendor_name;
+
+SELECT vendor_name, invoice_number, invoice_total
+FROM vendors 
+	LEFT JOIN invoices USING (vendor_id)
+ORDER BY vendor_name;
+
+SELECT invoice_number, vendor_name
+FROM vendors
+	NATURAL JOIN invoices
+ORDER BY invoice_number;
+
+	SELECT 'Active' AS source, invoice_number, invoice_date, invoice_total
+	FROM invoices
+	WHERE invoice_total - payment_total - credit_total > 0
+UNION
+	SELECT 	'Paid' AS source, invoice_number, invoice_date, invoice_total
+    FROM invoices
+    WHERE invoice_total - payment_total - credit_total <= 0
+ORDER BY invoice_total DESC;
+
+
